@@ -1,0 +1,405 @@
+############################################################################################
+### Code Quality, Metrics, and Rails Library Dependencies
+############################################################################################
+
+############################################################################################
+### TABLE OF CONTENTS
+############################################################################################
+
+* Principles (Understanding Code Quality)
+* Methodology (Promoting Code Quality)
+* Metrics (Measuring Code Quality in Ruby)
+* Rails Library Dependencies
+
+############################################################################################
+### PRINCIPLES
+############################################################################################
+
+# What does Wikipedia say?
+("Software Quality (Wikipedia)":http://en.wikipedia.org/wiki/Software_quality)
+Cryptic definition
+Can mean a lot of different things to different people
+Discussion point: what are the tradeoffs here, if any?
+Quality Factors (Non Functional)
+Reliability is correctness over time in different environments
+Maintainability - "is a change likely to require restructuring the main program, or just a module?". Modification costs.
+Consistency - includes coding conventions, idioms, single way to do something is used everywhere
+Readability - understandability
+Conciseness - minimizing the amount of code (no unused/redundant code, DRY)
+These are a lot of different goals that can pull us in different directions. We need to find proper tradeoffs.
+
+# Cohesion
+- "if the methods that serve the given class tend to be similar in many aspects, then the class is said to have high cohesion. In a highly-cohesive system, code readability and the likelihood of reuse is increased, while complexity is kept manageable."
+
+# Coupling
+- A change in one module usually forces a ripple-effect of changes in other modules.
+
+# How does Microsoft do it?
+(Quote from Kent Beck)
+- Microsoft release process
+
+# Software Health
+http://itc.conversationsnetwork.org/shows/detail301.html#
+Kent Beck - The Future of Developer Testing (2004)
+Accountability, blame
+Health is different from quality
+Quality is instantaneous measure, what happens if we deploy now? Bug count. Is today gonna be the day when my software has no bugs?
+Health is state over time. How does the system respond to stress? How does the software respond to change in the load, usage patterns, requirements, the customer base.
+How healthy are the employees.
+What is the health of the relationships, in the team, with customers, with managers.
+Health is your responsibility.
+What is this going to cost? Compared to what?
+People don't have a sense of how good software can be. One defect a month. One defect a year.
+What are the benefits that come when you can trust the software works the way it ought to?
+Culture of plausible deniability. This code is not completely tested, but I think it works.
+You are not done until you have the tests.
+Don't tell me what to do.
+Energized work (40 hours a week). Having hobbies. Having good relationships with non-geeks. I swear it's a good idea.
+How much energy you bring affects the performance of your team. If you as a developer write tests, your team will be more effective.
+
+# Questions About a Method
+- Choose one level of abstraction
+
+# Principles of OO Design
+("GoF Design Patterns (Wikipedia)":http://en.wikipedia.org/wiki/Design_Patterns)
+- white-box reuse versus black-box reuse
+- 'delegation' is an extreme form of object composition that can always be used to replace inheritance
+
+# Why Style Matters
+("JavaScript the Good Parts":http://www.amazon.com/JavaScript-Good-Parts-Douglas-Crockford/dp/0596517742)
+- Has been criticized for being bitter and self righteous. But he is a great writer with important insights.
+- DHH: Ruby is french and Java is german
+
+# Conceptual integrity
+- A single mind is the ideal
+- A functional architect (product owner)
+- An implementation architect
+
+############################################################################################
+### METHODOLOGY
+############################################################################################
+
+# TDD
+"If you use this process, you will find that it changes the structure of the code you write. The simple fact that you are continually aligning your code to the tests results in code that is made up of small methods, each of which does one thing. These methods tend to be loosely coupled and have minimal side-effects.
+As it happens, the hallmark of well-designed code is small methods that do one thing, are loosely coupled, and have minimal side-effects. I used to think that was kind of a lucky coincidence, but now I think it’s a direct side-effect of building the code in tandem with the tests. In effect, the tests act as a universal client for the entire code base, guiding all the code to have clean interactions between parts because the tests, acting as a third-party interloper, have to get in between all the parts of the code in order to work." - from Rails Test Prescriptions
+- Verification is a bonus
+
+# The Agile Manifesto
+"Agile Manifesto (Wikipedia)":http://en.wikipedia.org/wiki/Agile_Manifesto
+- Striking a balance between left and right. It's not an either-or proposition. We have to remember that Agile was born in an environment that was way to far to the right. 
+
+# XP
+- Do the simplest thing that can possibly work the code needs to communicate to humans
+  up to 5 times as much time goes into maintaining the code than writing it.
+
+# XP Practices
+- Fine scale feedback
+- Continuous process
+- Shared understanding
+- Programmer welfare
+
+############################################################################################
+### METRICS
+############################################################################################
+
+############################################################################################
+### RAILS LIBRARY DEPENDENCIES
+############################################################################################
+
+Rails Library Creep. A cousin of Feature Creep and Software Bloat. Ironic. Aren't we supposed to be lean?
+LOC
+
+Vendor Lockin
+
+############################################################################################
+### REFERENCES
+############################################################################################
+
+* "Software Quality (Wikipedia)":http://en.wikipedia.org/wiki/Software_quality
+* "The Broken Iron Triangle of Software Development":http://www.ambysoft.com/essays/brokenTriangle.html
+* "Project triangle (Wikipedia)":http://en.wikipedia.org/wiki/Project_triangle
+* "Kent Beck (Wikipedia)":http://en.wikipedia.org/wiki/Kent_Beck
+* "Kent Beck: Developer Testing":http://itc.conversationsnetwork.org/shows/detail301.html#
+* "Kent Beck: Smalltalk Best Practice Patterns":http://www.amazon.com/Smalltalk-Best-Practice-Patterns-Kent/dp/013476904X
+* "Kent Beck on Implementation Patterns":http://www.infoq.com/interviews/beck-implementation-patterns
+* "Cohesion (Wikipedia)":http://en.wikipedia.org/wiki/Cohesion_%28computer_science%29
+* "Coupling (Wikipedia)":http://en.wikipedia.org/wiki/Coupling_%28computer_science%29
+* "Software metric (Wikipedia)":http://en.wikipedia.org/wiki/Software_metrics
+* "GoF Design Patterns (Wikipedia)":http://en.wikipedia.org/wiki/Design_Patterns
+* "Agile Manifesto (Wikipedia)":http://en.wikipedia.org/wiki/Agile_Manifesto
+* "Extreme Programming":http://en.wikipedia.org/wiki/Extreme_Programming
+* "JavaScript the Good Parts":http://www.amazon.com/JavaScript-Good-Parts-Douglas-Crockford/dp/0596517742
+* "Feature creep":http://en.wikipedia.org/wiki/Feature_creep
+* "Software bloat":http://en.wikipedia.org/wiki/Software_bloat
+
+
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+++++++++++++++++++++++++++++++++ temporary notes below, unstructured ++++++++++++++++++++++++++++++++++++
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+- Single resp principle for classes
+- http://en.wikipedia.org/wiki/Law_of_Demeter
+- SOLID http://en.m.wikipedia.org/wiki/Solid_(object-oriented_design)
+- SOLID in Ruby http://github.com/jimweirich/presentation_solid_ruby
+- Incorporate other stuff from Object Design
+- RailsConf 2010: http://en.oreilly.com/rails2010/public/schedule/proceedings
+- RailsConf 2009: http://en.oreilly.com/rails2009/public/schedule/proceedings
+
+Make the presentation adher to cohesion/coupling principle by splitting it up into:
+
+Software Quality
+Rails Library Creep
+
+
+- DRY
+- Convention over Configuration
+- JavaScript the Good Parts: Programming style
+- Rails Test Prescriptions
+- What is good software?
+- Cohesion
+- Coupling
+- Law of Demeter
+
+*** Promoting Code Quality
+- TDD
+- Agile
+- Extreme Programming
+
+*** Measuring Code Quality
+
+*** Rails Library Dependencies (Det finns en röd tråd, jag lovar!)
+- I am going to be honest with you upfront: "I HATE RUBY ON RAILS PLUGIN AND GEM DEPENDENCIES!" PITA
+"warning: HTTParty depends on version 0.1.7 of crack, not 0.1.6"
+"can't activate , already activated gherkin-2.2.0"
+
+- A lot of Ruby on Rails libraries are driven for the desire for beautiful DSL wrappers. Examples: httparty, whenever.
+- The other type of library delivers gives you application level functionality (engines). Example: devise.
+- Third type is infrastructure/API level outside the scope of Rails. Most legitimate IMHO.
+
+Libraries with functionality that you don't really need, that are overkill. Example: capistrano-ext
+
+Example LOC from Newsdesk with library counts and LOC
+The httparty/clicky story
+Rational Version policy
+
+Managing complexity.
+
+We Ruby developers are supposed to be lean and simple. Less is more, right?
+
+- Intertwining, when everybody talks to everybody.
+
+academic earth!
+
+<!-- * "Promoting Code Quality":promoting-quality.html
+* "Measuring Code Quality":measuring-quality.html
+* "Rails Library Dependencies":library-dependencies.html -->
+
+
+Choose Your Dependencies Wisely
+
+Not very Rails-esque. Choices, choices, choices. This library or that library? Lack of conventions and consensus. Rapidly changing landscape. The rug being swept away under your feet.
+
+How do you decide if to use a library? How do you evaluate libraries? Like other code, since after all, libraries are code. How do you evaluate code?
+
+
+Software Health - chapter from my Newsdesk presentation
+
+Metrics
+
+Model layer independent of the framework (Rails)? Independent of the persistence layer? Why should your business logic depend on Rails? The fewer dependencies your code has, the longer it can live.
+
+Plugins that are intertwined with Rails. restful-authentication example. Code generation with controllers and views. authlogic, now devise.
+
+Libraries that are coupled and have a lot of dependencies don’t age well.
+
+A discussion of when to bring in libraries, and what to require from a library. Pros and cons.
+
+We are lured by the magic of the libraries and their pretty DSLs. and by short term productivity boosts.
+
+Version hell. Picking the right version of rails and the right version of the library.
+
+Prevent you from Ruby upgrades
+Rails upgrades
+Database upgrades.
+Search engine upgrades
+
+libraries can give you flying start, quick win
+
+Questions to ask about the library:
+
+- How well does it functionality map your needs? Does it do a lot of stuff that you don’t need? Is there some stuff you need to add or change?
+- Does it have good test coverage
+- Is it being maintained?
+- Is it mature and stable?
+- What does it depend on?
+- How big is the code base? Can you read the code and readily understand how it works?
+- What is the interface of the library?
+- How high is the cohesion of the library?
+- How high is the coupling of the library?
+- What are the code metrics of the library?
+
+Treating libraries as black boxes doesn’t really work so well in Rails land.
+
+A typical Rails library is developed quickly (over night) by a single Rails developer in his free time, then further developed and maintained for a couple of months, then mostly abandoned, sometimes forked if it’s popular. A typical library is highly coupled to Rails. The library landscape is messy.
+
+The Ruby web development landscape has gotten a lot more diversified over the last five years. There used to be only two popular books (AWR and the Pickaxe). Now there are hundreds. There used to be one Ruby interpreter, now there are several. There used to be only one major Rails version, now there are three. There used to be few alternatives to Rails, now there are many other popular frameworks. Everybody used to use RDBMS databases, now NoSQL databases are all the rage. A typical Rails system used to be a single simple app, now service oriented architectures with several apps are popular.
+
+application code does exactly what you need, no more no less
+you wrote it, so you probably understand it
+you have tests for it that you run frequently
+
+Which levels in the stack belong in a library and which belong in your application? The engine discussion.
+
+Using libraries give you a bunch of stuff you don’t need (your needs and the needs of the plugin author are seldom identical).
+
+Libraries Accumulate and Quickly Become a Liability Over Time
+Do you understand exactly what the library does and how it’s implemented?
+Can you maintain it?
+Is it tested?
+Does it work with future versions of Ruby and Rails?
+Which dependencies does it have?
+Does it patch Rails or Ruby in bad ways?
+Who wrote it?
+Sexy DSLs (httparty, sunspot are examples)
+How many lines of Ruby code is it?
+When was it last updated?
+What is the current version?
+How stable is it?
+Do you need to hack it or monkey patch it to do what you need?
+
+Example: rsolr an sunspot gems:
+Code LOC: 16672
+find vendor/gems/rsolr-0.12.1/lib -name '*.rb'|xargs wc -l # => 492
+find vendor/gems/sunspot-1.0.3/lib -name '*.rb'|xargs wc -l # => 6889
+find vendor/gems/sunspot_rails-1.0.3/lib -name '*.rb'|xargs wc -l # => 1237
+
+Example: httparty
+find vendor/gems/httparty-0.6.0/lib -name '*.rb'|xargs wc -l # => 903
+find vendor/gems/crack-0.1.7 -name '*.rb'|xargs wc -l # => 1073
+
+When you upgrade, beware of backwards incompatibilities. Rational versioning policy of RubyGems, not always followed: http://docs.rubygems.org/read/chapter/7
+
+major.minor.build - i.e. 1.2.4
+
+A category 1 change (implementation detail) will increment the build number.
+A category 2 change (backwards compatible) will increment the minor version number and reset the build number.
+A category 3 change (incompatible) will increment the major build number and reset the minor and build numbers.
+
+Example: httparty going from 0.4.3 to 0.6.0
+Commit message: “Rolling back httparty to version 0.4.3 for compatibility with Clicky API (don't ask)”
+Example: globalize2
+globalize2_hacked
+
+Maybe in practice only category 1 changes (build number) can be relied on to be backwards
+compatible??????
+
+35 plugins and 35 gems!
+
+Libraries tend to depend on other libraries and “drag these along” into your up. You tend to end up with several libraries that do the same thing (XML, JSON parsing etc.).
+
+Ideally you want to have one consistent way that you always do pagination, file uploads, state machines, JSON/XML/CSV parsing/generation, authentication etc. in your app.
+
+Wikipedia: “A liability can mean something that is a hindrance or puts an individual or group at a disadvantage”
+
+Multiple libraries that do the same thing
+Over focus on pretty dsls so blindly that we sacrifice simplicity and maintainability
+
+The ruby interpreter
+Rails
+The database
+The os?
+
+Can you install your app anywhere
+
+Staying lean and simple
+
+Isolationist testing
+
+Integration testing of APIs
+
+References:
+Newsdes Product Quality
+12 hours to rate: http://www.slideshare.net/ehuard/12-hours-to-rate-a-rails-application
+metric fu presentations
+
+Multiple libraries that do the same thing
+Over focus on pretty dsls so blindly that we sacrifice simplicity and maintainability
+
+The ruby interpreter
+Rails
+The database
+The os?
+
+Can you install your app anywhere
+
+Staying lean and simple
+
+like russian dolls
+code weight
+boom, sunspot, 7000 lines of code extra
+weighing you down, changing quickly, conflicting version changes,
+compatibility of versions, ruby upgrades, rails upgrades
+
+Quantity
+Libraries
+Moving parts
+Hacked libs
+
+Structure of files
+Lib dir
+Vendor
+Concerns
+
+Integration testing apis
+
+
+############################################################################################
+### REFERENCES FOR CONSIDERATION
+############################################################################################
+
+* "Marcel Molina and Jamis Buck: Rails Code Review":http://mtnwestrubyconf2007.confreaks.com/session10.html
+* "Fred Brooks: The Mythical Man Month":http://en.wikipedia.org/wiki/The_Mythical_Man-Month
+* "Jason Fried, DHH: Rework":http://www.amazon.com/Rework-Jason-Fried/dp/0307463745
+* "Marty Andrews: Code Quality Analysis":http://en.oreilly.com/rails2009/public/schedule/detail/6752
+* "Jake Scruggs: Using Metric Fu to Make Your Rails Code Better (Railsconf 2009)":http://en.oreilly.com/rails2009/public/schedule/detail/7935
+* "Jake Scruggs: Metric Fu Presentation":http://www.channels.com/episodes/show/4013322/Using-metric-fu-to-Make-Your-Rails-Code-Better-Jake-Scruggs
+* "Ruby on Rails Code Quality Checklist":http://www.matthewpaulmoore.com/ruby-on-rails-code-quality-checklist
+* "Peter Marklund: Test Driven Development with Ruby":http://marklunds.com/test-driven-development-with-ruby.html
+
+
+# Canibalizing controllers
+- Filter mayhem, the get_pressroom filter gotcha. Filter overuse. To eager to push code up the controller hierarchy sometimes. The set_locale example.
+
+# Libraries
+- Tendency to overuse
+- Need code review. We need to understand how they work in a deep way.
+- Need to not hack Rails in a bad way
+
+# Short Method
+- Reek: refers to finder more than self (LowCohesion)
+
+# Complexity is Bad
+- Introducing yet another generic concept that is only used in one place.
+- Solving a problem by adding code that creates an exception and thus adds
+to the complexity, instead of solving the problem by removing
+complexity.
+
+# Metrics
+- RCov: untested publish actions. Untested API classes.
+- The number of assertions per lines of code can serve as a crude measure of test coverage
+- Build server with metric thresholds
+- Flog: lines per method, branches in a method (cyclomatic complexity)
+- Reek: feature envy
+
+"Code rots one day at a time"
+George Carlin’s Law: “Everyone slower than me is stupid, and everyone faster is crazy”
+Prioritize your efforts
+"A good goal is as many tests as there are paths"
+
+Lean Software Development
+http://en.wikipedia.org/wiki/Lean_software_development
+
+Acceptance testing
+http://en.wikipedia.org/wiki/Acceptance_tests
+
+The complexity cost of functionality is bigger than you think
